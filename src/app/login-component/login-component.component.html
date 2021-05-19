@@ -1,0 +1,24 @@
+<mat-toolbar>
+    <span>LOGIN</span>
+  </mat-toolbar>
+  <mat-card class="my-card">
+     <mat-card-content>
+        <form class="my-form" autocomplete="off" novalidate [formGroup]="loginform">
+           <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input  matInput  placeholder="Email" name="email" formControlName="Email" id="FisrtName" required>
+           </mat-form-field>
+           <mat-form-field class="full-width">
+              <mat-label>Password</mat-label>
+              <input  matInput  type="password" placeholder="Password" name="password" formControlName="Password" required> 
+           </mat-form-field> 
+        </form>
+     </mat-card-content>
+     <mat-card-actions> 
+         <button mat-raised-button color="primary"(click)="onSubmit()"  [disabled]="!loginform.valid" >Login</button>
+         <button mat-raised-button color="primary" routerLink="/registration">Register</button>
+      </mat-card-actions>
+  </mat-card>
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+   <p style="color: white">Please Wait. </p>  
+   </ngx-spinner>    

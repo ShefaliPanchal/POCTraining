@@ -1,0 +1,48 @@
+<mat-toolbar>
+    <span>Sign Up HR Assessment</span>
+  </mat-toolbar>
+  <mat-card class="my-card">
+     <mat-card-content>
+        <form class="my-form" autocomplete="off" novalidate [formGroup]="form">
+		    <mat-form-field class="full-width">
+              <mat-label>First Name</mat-label>
+              <input  matInput  placeholder="First Name" name="FisrtName" formControlName="FisrtName" id="FisrtName" required>
+              <mat-error *ngIf="f.FisrtName.errors?.required">FisrtName is required</mat-error>
+            </mat-form-field>
+		    <mat-form-field class="full-width">
+              <mat-label>Last Name</mat-label>
+              <input  matInput  placeholder="Last Name" name="LastName" formControlName="LastName" id="LastName" required>
+              <mat-error *ngIf="f.LastName.errors?.required">LastName is required</mat-error>
+            </mat-form-field>
+		    <mat-form-field class="full-width">
+              <mat-label>Date of Birth</mat-label>
+              <input type="date" matInput  placeholder="Date of Birth" name="dateOfBirth" formControlName="dateOfBirth" id="dateOfBirth" required>
+           </mat-form-field>
+           <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input  matInput  placeholder="Email" name="email" formControlName="Email" id="Email" required>
+              <mat-error *ngIf="f.Email.errors?.required">Email is required</mat-error>
+            </mat-form-field>
+           <mat-form-field class="full-width">
+              <mat-label>Password</mat-label>
+              <input  matInput  type="password" placeholder="Password" name="password" [type]="hide ? 'password' : 'text'" formControlName="Password" required> 
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error *ngIf="f.Password.errors?.required">Password is required</mat-error>
+            </mat-form-field> 
+		    <mat-form-field class="full-width">
+              <mat-label>Confirm Password</mat-label>
+              <input  matInput  type="password" placeholder="Password" name="ConfirmPassword" [type]="confirmhide ? 'password' : 'text'" formControlName="ConfirmPassword" required> 
+              <mat-icon matSuffix (click)="confirmhide = !confirmhide">{{confirmhide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error *ngIf="f.ConfirmPassword.errors?.required">Confirm Password is required</mat-error>
+              <mat-error *ngIf="f.ConfirmPassword.errors?.mustMatch">Passwords must match</mat-error>
+            </mat-form-field> 
+        </form>
+     </mat-card-content>
+     <mat-card-actions> 
+         <button mat-raised-button color="primary" (click)="onSubmit()"  [disabled]="!form.valid" >Register</button>
+         <button mat-raised-button style="background-color: blueviolet;" routerLink="/login">Login</button>
+      </mat-card-actions>
+  </mat-card>
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+   <p style="color: white">Please Wait. </p>  
+   </ngx-spinner>    
